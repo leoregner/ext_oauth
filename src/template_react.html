@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Grant Access</title>
+		<meta name="author" content="Leopold Mathias Regner" />
+		<meta http-equiv="content-type" content="text/html; charset=utf8" />
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function(e)
+		  	{
+				// turn redirect url into a user-friendly app name
+				var span = document.getElementsByTagName('span')[0];
+				var url = (function(url) { var a = document.createElement('a'); a.href = url; return a })(span.innerHTML);
+				span.innerHTML = (url.protocol == 'http:' || url.protocol == 'https:') ? url.hostname : (url.protocol + '//' + url.hostname);
+				
+				// turn scope list into html list
+				var ul = document.getElementsByTagName('ul')[0], scope = ul.innerHTML.split(',');
+				ul.innerHTML = ''; for(i in scope) ul.innerHTML += '<li>' + scope[i] + '</li>';
+			});
+		</script>
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700');
+			html
+			{
+				background: #F2F2F2;
+				font-family: 'M PLUS Rounded 1c', 'Arial', sans-serif;
+			}
+			body
+			{
+				width: 400px;
+				text-align: center;
+				margin-left: calc(50% - 200px);
+			}
+			#info
+			{
+				font-size: 16px;
+			}
+			#info h1
+			{
+				font-size: 25px;
+				margin: 40px 0 40px 0;
+			}
+			#info span
+			{
+				display: block;
+				font-weight: bold;
+				margin: 20px 0 20px 0;
+			}
+			#info ul
+			{
+				margin-bottom: 50px;
+			}
+			#info ul li
+			{
+				text-align: left;
+			}
+			.button input
+			{
+				display: none;
+			}
+			.button label
+			{
+				color: white;
+				width: 150px;
+				height: 30px;
+				display: block;
+				cursor: pointer;
+				font-size: 16px;
+				padding-top: 10px;
+				border-radius: 5px;
+				text-align: center;
+			}
+			.button
+			{
+				display: inline-block;
+			}
+			.button label[for=allow]
+			{
+				background: #79BD35;
+				border: 1px solid #608446;
+				
+			}
+			.button label[for=deny]
+			{
+				background: #737278;
+				border: 1px solid #2D2D2F;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="info">
+			<h1>Grant Access</h1>
+			An application available under
+			<span>{{ request.redirect_uri }}</span>
+			would like to access your following data:
+			<ul>{{ request.scope }}</ul>
+		</div>
+		<form method="post">
+			<div class="button">
+				<input type="radio" name="allow" value="yes" id="allow" onchange="document.forms[0].submit()" />
+				<label for="allow" for="#allow">allow</label>
+			</div>
+			<div class="button">
+				<input type="radio" name="allow" value="no" id="deny" onchange="document.forms[0].submit()" />
+				<label for="deny">deny</label>
+			</div>
+		</form>
+	</body>
+</html>

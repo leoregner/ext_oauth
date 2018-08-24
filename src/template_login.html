@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Grant Access</title>
+		<meta name="author" content="Leopold Mathias Regner" />
+		<meta http-equiv="content-type" content="text/html; charset=utf8" />
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function(e)
+		  	{
+				if(self.location.href.indexOf('error') > -1)
+					document.getElementById('error').style.display = 'block';
+			});
+		</script>
+		<style type="text/css">
+			#error
+			{
+				
+			}
+			.form
+			{
+				
+			}
+			input
+			{
+				
+			}
+			button
+			{
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="error" style="display: none">
+			Error!
+		</div>
+		<form method="post">
+			<input name="user" type="text" />
+			<input name="pass" type="password" />
+			<button type="submit">login</button>
+		</form>
+	</body>
+</html>

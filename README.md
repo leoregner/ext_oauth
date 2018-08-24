@@ -1,5 +1,5 @@
 # README
-The purpose of this software is to use an existing application's user authentication database table to provide users access to other apps with the same credentials using the OAuth protocol.
+The purpose of this software is to use an existing application's user authentication database table to provide the users with a single sign-on service.
 
 ## Getting Started
 To run the application in a Docker container:
